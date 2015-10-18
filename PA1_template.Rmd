@@ -6,6 +6,8 @@ Reproducible Research: Peer Assessment 1
 ========================================
 
 
+
+
 ##Loading and preprocessing the data
 
 
@@ -34,12 +36,14 @@ head(steps_per_day)
 **2,- Histogram of total number of steps taken each day**
 
 
+
 ```{r fig.width=5, fig.height=4}
 
 hist(steps_per_day$steps,breaks=20,col="green",xlab="Steps per day",main="Frequency of steps per day")
 
 
 ```
+<img src="figures/fig1.png" width="400" height="400" />
 
 **3.- Mean and median of the total number of steps taken per day**
 
@@ -71,6 +75,7 @@ plot(x <- av_steps_per_interval$interval ,y <- av_steps_per_interval$av_steps , 
 title(main="Average steps over intervals",xlab="5-minutes interval",ylab="Average steps")
 
 ```
+<img src="figures/fig2.png" width="400" height="400" />
 
 **2.- Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?**
 
@@ -92,6 +97,7 @@ sum(is.na(data$steps))
 
 **2.- Filling all the missing values in the dataset**
 
+I use the mean for that 5-minute interval to fill the missing values
 
 ```{r}
 vna <- numeric()
@@ -124,6 +130,8 @@ names(steps_per_day_without_na)[2] <- "steps"
 ```{r fig.width=5, fig.height=4}
 hist(steps_per_day_without_na$steps,breaks=20,col="green",xlab="Steps per day",main="Frequency of steps per day without NA")
 ```
+<img src="figures/fig3.png" width="400" height="400" />
+
 
 ```{r}
 
@@ -131,6 +139,10 @@ mean(steps_per_day_without_na$steps)
 median(steps_per_day_without_na$steps)
 
 ```
+
+The mean and the meadian have the same values. The median is a bit diferent than before. 
+The main impact in the histogram we can see is the frequency is higher over the value 10000 at 'Steps per day'
+
 
 
 ##Are there differences in activity patterns between weekdays and weekends?
@@ -163,4 +175,4 @@ library(lattice)
 
 xyplot(steps ~ interval | daylevel,av_steps_per_interva_by_day , type = "l", col="red", layout= c(2, 1), xlab = "Interval", ylab = "Number of steps")
  ```
-
+<img src="figures/fig4.png" width="400" height="400" />

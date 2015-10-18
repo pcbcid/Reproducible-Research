@@ -126,6 +126,7 @@ which(av_steps_per_interval$av_steps ==  max_av_steps)</code></pre>
 <pre class="r"><code>sum(is.na(data$steps))</code></pre>
 <pre><code>## [1] 2304</code></pre>
 <p><strong>2.- Filling all the missing values in the dataset</strong></p>
+<p>I use the mean for that 5-minute interval to fill the missing values</p>
 <pre class="r"><code>vna &lt;- numeric()
 for (i in 1:nrow(data)){
      exp &lt;-data[i, ]
@@ -149,6 +150,7 @@ names(steps_per_day_without_na)[2] &lt;- &quot;steps&quot;</code></pre>
 <pre><code>## [1] 10766.19</code></pre>
 <pre class="r"><code>median(steps_per_day_without_na$steps)</code></pre>
 <pre><code>## [1] 10766.19</code></pre>
+<p>The mean and the meadian have the same values. The median is a bit diferent than before. The main impact in the histogram we can see is the frequency is higher over the value 10000 at ‘Steps per day’</p>
 </div>
 <div id="are-there-differences-in-activity-patterns-between-weekdays-and-weekends" class="section level2">
 <h2>Are there differences in activity patterns between weekdays and weekends?</h2>
